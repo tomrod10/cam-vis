@@ -1,6 +1,4 @@
-# cam-vis
-
-# CPM - Color Palette Maker
+# CAM-VIS
 
 ## Summary
 TBD
