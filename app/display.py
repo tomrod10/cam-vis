@@ -18,6 +18,7 @@ class Display:
 
             cv2.imshow('frame', frame)
             if cv2.waitKey(1) == ord("q"):
+                self.stop()
                 break
     
     def stop(self):
