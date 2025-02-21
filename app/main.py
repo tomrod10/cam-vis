@@ -1,8 +1,10 @@
+import sys
 
+from Display import Display
 
-def main():
-    ...
+dp = Display()
 
+dp.start()
 
-if __name__ == "__main__":
-    main()
+if sys.exit():
+    dp.stop()
