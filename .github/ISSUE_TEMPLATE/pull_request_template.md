@@ -7,23 +7,18 @@ assignees: ''
 
 ---
 
-#### Description
+### Description
 [Type here]
 
 ### Issue 
 [Issue #]
 
-#### Screenshots
+### Screenshots
 [Attach here]
 
-#### Files
+### Files
 A list of relevant files for this issue. This will help people navigate the project and offer some clues of where to start.
 - `/example/main.py`
-
-#### Tasks Completed
-Include specific tasks in the order they need to be done in. Include links to specific lines of code where the task should happen at.
-- [ ] Did x
-- [ ] Removed Y
 
 ### Testing
 Please select relevant options and add details below about testing approach and related files if necessary.
