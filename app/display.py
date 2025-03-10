@@ -20,8 +20,13 @@ class Display:
                 break
 
             fgMask = self.md.background_subtraction(self.cap, frame)
-            frame_ct = self.md.contour_detection(frame, fgMask)
+            _, fgMask_th = self.md.threshold(fgMask)
+            edMask = self.md.erosion_dilation(fgMask_th)
+            frame_ct = self.md.contour_detection(
+                frame, edMask
+            )  # swapped arg places
             cv2.imshow("FG Mask", frame_ct)
+            # cv2.imshow("FG Mask", frame_ct)
 
             if cv2.waitKey(1) == ord("q"):
                 self.stop()

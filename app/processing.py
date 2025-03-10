@@ -28,6 +28,13 @@ class MotionDetector:
         frame_ct = cv2.drawContours(frame, cont, -1, (0, 255, 0), 2)
         return frame_ct
 
-    def threshold(self, frame): ...
+    def threshold(self, fgMask):
+        ret, mask_th = cv2.threshold(fgMask, 180, 255, cv2.THRESH_BINARY)
+        return (ret, mask_th)
+
+    def erosion_dilation(self, fgMask_th):
+        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
+        edMask = cv2.morphologyEx(fgMask_th, cv2.MORPH_OPEN, kernel)
+        return edMask
 
     def gaussian_blur(self): ...
