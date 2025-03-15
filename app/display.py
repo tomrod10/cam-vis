@@ -26,7 +26,6 @@ class Display:
                 frame, edMask
             )  # swapped arg places
             cv2.imshow("FG Mask", frame_ct)
-            # cv2.imshow("FG Mask", frame_ct)
 
             if cv2.waitKey(1) == ord("q"):
                 self.stop()
