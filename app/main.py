@@ -1,7 +1,6 @@
 import sys
 
-# from Display import Display
-from Display import Display
+from display import Display
 
 dp = Display()
 
