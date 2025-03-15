@@ -3,7 +3,9 @@ import cv2
 
 class MotionDetector:
     def __init__(self):
-        self.backSub = cv2.createBackgroundSubtractorMOG2()
+        self.backSub = cv2.createBackgroundSubtractorMOG2(
+            varThreshold=10.5, detectShadows=False
+        )
 
     def alert(self):
         print("Motion detected!")
@@ -25,11 +27,20 @@ class MotionDetector:
         cont, hier = cv2.findContours(
             fg_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE
         )
-        frame_ct = cv2.drawContours(frame, cont, -1, (0, 255, 0), 2)
+
+        ft_cont = self.filter_contour(cont)
+        frame_ct = cv2.drawContours(frame, ft_cont, -1, (0, 255, 0), 2)
         return frame_ct
 
+    def filter_contour(self, contours):
+        min_contour_area = 200000
+        large_contours = [
+            cnt for cnt in contours if cv2.contourArea(cnt) > min_contour_area
+        ]
+        return large_contours
+
     def threshold(self, fg_mask):
-        ret, mask_th = cv2.threshold(fg_mask, 180, 255, cv2.THRESH_BINARY)
+        ret, mask_th = cv2.threshold(fg_mask, 220, 255, cv2.THRESH_BINARY)
         return (ret, mask_th)
 
     def erosion_dilation(self, mask_th):

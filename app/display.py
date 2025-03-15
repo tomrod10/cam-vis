@@ -1,10 +1,14 @@
+import os
 import cv2
 import processing
+
+file_path = "test_video.mov"
+abs_path = os.path.abspath(file_path)
 
 
 class Display:
     def __init__(self):
-        self.cap = cv2.VideoCapture(0)
+        self.cap = cv2.VideoCapture(abs_path)
         self.md = processing.MotionDetector()
 
         if not self.cap.isOpened():
