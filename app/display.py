@@ -23,7 +23,7 @@ class Display:
             _, mask_th = self.md.threshold(fg_mask)
             mask_ed = self.md.erosion_dilation(mask_th)
             frame_ct = self.md.contour_detection(frame, mask_ed)
-            cv2.imshow("CD Frame", frame_ct)
+            cv2.imshow("CT Frame", frame_ct)
 
             if cv2.waitKey(1) == ord("q"):
                 self.stop()
